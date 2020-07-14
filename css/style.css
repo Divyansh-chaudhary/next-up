@@ -19,6 +19,7 @@ body {
     font-family: sans-serif;
 }
 
+/* navbar */
 nav {
     position: relative;
     display:grid;
@@ -110,6 +111,22 @@ nav a {
     width: 50px;
     margin-top: 0px;
     transform: rotate(-50deg);
+}
+
+/*   header content     */
+header {
+    height: 100vh;
+    position: relative;
+    background: url("../assest/header.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.header-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -40%);
 }
 
 @media screen and (max-width: 837px) {
