@@ -7,13 +7,13 @@
     font-family: roboto;
     src: url("../fonts/roboto condensed/RobotoCondensed-Regular.ttf");
 }
-/********************************************* global classes **************************/
+/*************************** global classes *********************/
 
 a { text-decoration: none;}
 html, body { overflow-x: hidden; }
 body { font-family: sans-serif; }
 
-/********************************************* navbar **************************/
+/******************** navbar **************************/
 nav {
     position: relative;
     display:grid;
@@ -94,7 +94,7 @@ nav a { color: white; }
     transform: rotate(-50deg);
 }
 
-/*   header content     */
+/*******************   header and header content   ********************/
 header {
     height: 100vh;
     position: relative;
@@ -113,7 +113,7 @@ header {
     color: white;
 }
 
-/*********************************************  header animation ***************************/
+/**********************  header animation **********************/
 .head-animation {
     position: absolute;
     top: 0;
@@ -136,6 +136,108 @@ header {
 .header-anim:nth-child(5) { animation-duration: 1.2s; }
 .header-anim:nth-child(6) { animation-duration: 1.1s; }
 .header-anim:nth-child(7) { animation-duration: 1s;   }
+
+/********************* album section **************************/
+.album {
+    position: relative;
+}
+.album h2 {
+    position: absolute;
+    text-transform: uppercase;
+    color: silver;
+    opacity: 0.6;
+    font-weight: bolder;
+}
+.album button {
+    background-color: black;
+    display: inline-block;
+    transform: translate(50%, 1rem);
+    border-radius: 7px;
+    color: white;
+    letter-spacing: 2px;
+    padding: 10px;
+}
+.album button:hover {
+    background-color: #444;
+    color: #ddd;
+}
+
+.album .carousal-one > div {
+    position: relative;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 10px  black;
+    overflow: hidden;
+}
+.album .carousal-one > div .image {
+    position: relative;
+}
+.album .carousal-one > div .image p {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #eee;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 4px;
+    letter-spacing: 3px;
+}
+.album .carousal-one > div .content {
+    padding: 20px 15px;
+}
+.album .carousal-one > div .content h3 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    white-space: nowrap;
+}
+.album .carousal-one > div .content > p {
+    color: #333;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+.album .carousal-one > div .content hr {
+    height: 2px;
+    color: black;
+    margin-bottom: 12px;
+}
+.album .carousal-one > div .content div {
+    display: flex;
+    justify-content: flex-start;
+}
+.album .carousal-one > div .content div p {
+    display: inline-block;
+    padding: 0 15px ;
+    border-right: 1px solid black;
+    font-size: 1.1rem;
+}
+.album .carousal-one > div .content div p:nth-child(1) {
+    padding: 0 15px 0 0 ;
+}
+.album .carousal-one > div .image img {
+    width: 100%;
+}
+.album h2 {
+    font-size: 5rem;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+.album {
+    padding: 6rem 0 4rem 0;
+}
+.album .carousal-one > div {
+    width: 85%;
+}
+.video-carousal {
+    height: 100vh;
+    background-color: #acfdaa;
+}
+
 
 /****************************************  mobile media query ***********************/
 
@@ -297,7 +399,37 @@ header {
     .header-anim:nth-child(7) {
         display: none;
     }
+    .album button {
+        transform: translate(220%, 4rem);
+    }
+    .album h2 {
+        font-size: 14rem;
+        bottom: -4.5rem;
+        top: unset;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+    .album {
+        min-height: 47vh;
+    }
+    .carousal-one {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0 5rem;
+    }
 }
+@media screen and (min-width:470px) and (max-width:970px){
+    .carousal-one {
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 3rem;
+    }
+    .carousal-one > div {
+        display: grid;
+        grid-template-columns: 45% 55%;
+    }
+}
+
 
 /****************************************  laptop media query **************************/
 
@@ -322,7 +454,33 @@ header {
     .header-anim:nth-child(7) {
         display: block;
     }
+    .album button {
+        transform: translate(320%, 1rem);
+    }
+    .carousal-one {
+        padding: 0 8rem;
+    }
+    .album h2 {
+        font-size: 12rem;
+        bottom: -5rem;
+        top: unset;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @keyframes header-animation {
     0%   {
