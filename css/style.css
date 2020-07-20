@@ -10,9 +10,14 @@
 /*************************** global classes *********************/
 
 a { text-decoration: none;}
-html, body { overflow-x: hidden; }
-body { font-family: sans-serif; }
-
+ body { overflow-x: hidden;; }
+body { font-family: roboto; }
+button {
+    cursor: pointer;
+}
+button:hover {
+    opacity: 0.7;
+}
 /******************** navbar **************************/
 nav {
     position: relative;
@@ -55,7 +60,6 @@ nav ul li::before {
     border-bottom: 2px solid white;
     transform-origin: left;
     transform: scaleX(0);
-
 }
 
 nav ul li:hover a { color: #888 !important; }
@@ -140,18 +144,19 @@ header {
 /********************* album section **************************/
 .album {
     position: relative;
+    padding: 6rem 0 4rem 0;
+    text-align: center;
 }
-.album h2 {
+.album h2, .shirts h2 {
     position: absolute;
     text-transform: uppercase;
     color: silver;
     opacity: 0.6;
     font-weight: bolder;
 }
-.album button {
+.album button, .shirts button {
     background-color: black;
     display: inline-block;
-    transform: translate(50%, 1rem);
     border-radius: 7px;
     color: white;
     letter-spacing: 2px;
@@ -165,12 +170,19 @@ header {
 .album .carousal-one > div {
     position: relative;
     margin: auto;
-    border-radius: 15px;
-    box-shadow: 0 0 10px  black;
+    border-radius: 10px;
+    box-shadow: 0 0 10px  gray;
     overflow: hidden;
 }
 .album .carousal-one > div .image {
     position: relative;
+    overflow: hidden;
+}
+.album .carousal-one > div .image img {
+    transition-duration: .3s;
+}
+.album .carousal-one > div:hover .image img {
+    transform: scale(1.1, 1.1);
 }
 .album .carousal-one > div .image p {
     display: inline-block;
@@ -185,21 +197,22 @@ header {
     padding: 4px;
     letter-spacing: 3px;
 }
-.album .carousal-one > div .content {
+.album .carousal-one > div .content, .shirts .content {
+    text-align: left;
     padding: 20px 15px;
 }
-.album .carousal-one > div .content h3 {
+.album .carousal-one > div .content h3, .shirts .content h3 {
     font-size: 1.5rem;
     text-transform: uppercase;
     margin-bottom: 12px;
     white-space: nowrap;
 }
-.album .carousal-one > div .content > p {
+.album .carousal-one > div .content > p , .shirts .content a {
     color: #333;
     margin-bottom: 12px;
     font-size: 1.1rem;
 }
-.album .carousal-one > div .content hr {
+.album .carousal-one > div .content hr, .shirts .content hr {
     height: 2px;
     color: black;
     margin-bottom: 12px;
@@ -217,30 +230,243 @@ header {
 .album .carousal-one > div .content div p:nth-child(1) {
     padding: 0 15px 0 0 ;
 }
-.album .carousal-one > div .image img {
+.album .carousal-one > div .image img, .shirts .image img {
     width: 100%;
 }
-.album h2 {
+.album h2 , .shirts h2 {
     font-size: 5rem;
     top: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: -1;
-}
-.album {
-    padding: 6rem 0 4rem 0;
 }
 .album .carousal-one > div {
     width: 85%;
 }
-.video-carousal {
-    height: 100vh;
-    background-color: #acfdaa;
+/*************** video carousel section *********/
+video {
+    width: 100%;
 }
 
-
+/*************** shirts brands section *********/
+.shirts {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    text-align: center;
+    padding: 6rem 1rem 3rem;
+}
+.t-shirts > div {
+    box-shadow: 0 0 10px  gray;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.t-shirts > div .image {
+    position: relative;
+    cursor: pointer;
+}
+.t-shirts > div .image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0.6;
+    transition-duration: 1s;
+    z-index: 1;
+}
+.t-shirts > div .image::after {
+    content: "+";
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-size: 3rem;
+    top: 50%;
+    left: 50%;
+    font-weight: 100;
+    transform: translate(-50%, -50%);
+    display: none;
+    transition-duration: 1s;
+}
+.t-shirts > div .image:hover::before {
+    background-color: black;
+}
+.t-shirts > div .image:hover::after {
+    display: inline-block;
+}
+.t-shirts hr{
+    margin-top: 12px;
+}
+/********** tickets section ************/
+.last-section {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: url(../assest/header-2.jpg) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    padding: 6rem 1rem 3rem;
+    overflow: hidden;
+}
+.last-section h2 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 2rem);
+    font-size: 5.5rem;
+    text-transform: uppercase;
+    color: white;
+    opacity: 0.5;
+    font-weight: 900;
+}
+.last-section .tickets {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem 0;
+}
+.last-section .ticket {
+    text-align: left;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+.last-section .ticket h3 {
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: .8rem;
+    font-size: 1.5rem;
+}
+.last-section .ticket p {
+    display: inline-block;
+    color: #333;
+}
+.last-section .ticket p:nth-child(2) {
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 1px solid black;
+}
+.last-section .ticket a {
+    display: block;
+    width: min-content;
+    margin-top: 1.1rem;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    padding: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.last-section button {
+    margin-top: 4rem;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    padding: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+/****************** footer *******************/
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+footer .stay-updated p {
+    margin: .7rem 0 2rem 0;
+    letter-spacing: 7px;
+    word-spacing: .5rem;
+    line-height: 1.8rem;
+    font-size: .8rem;
+}
+footer .stay-updated input {
+    display: inline-block;
+    background-color: black;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 1.4rem .7rem;
+    width: 90%;
+    margin-bottom: 2rem;
+}
+footer .stay-updated button {
+    background-color: white;
+    color: black;
+    padding: 0.8rem;
+    border-radius: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 800;
+    cursor: pointer;
+}
+footer .stay-updated button:hover {
+    color: gray;
+}
+footer .footer-navbar {
+    margin-top: 6rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 3rem;
+}
+footer .navbar li {
+    padding: .3rem;
+    position: relative;
+}
+footer .navbar li a {
+    font-size: .8rem;
+    letter-spacing: 2px;
+}
+footer .navbar li::before {
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: -5px;
+    right: -5px;
+    border-bottom: 2px solid white;
+    transform-origin: left;
+    transform: scaleX(0);
+}
+footer .navbar li:hover a {
+    color: gray;
+}
+footer .navbar li:hover::before {
+    transition: .5s transform;
+    transform: scaleX(1);
+}
+footer .footer-navbar .footer-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+}
+footer .footer-navbar .footer-icons a:hover {
+    transition-duration: .2s;
+    color: gray;
+    transform: scale(0.9, 0.9);
+}
+footer hr {
+    margin: 1rem 0;
+}
+footer li  {
+    list-style-type: none;
+}
+footer a {
+    color: white;
+}
+footer .copyright {
+    line-height: 2;
+}
+footer .copyright ul li {
+    cursor: pointer;
+}
+footer .copyright > p {
+    color: gray;
+}
 /****************************************  mobile media query ***********************/
-
 @media screen and (max-width: 512px) {
     nav .btn {
         display: block;
@@ -323,10 +549,32 @@ header {
     .header-anim:nth-child(7) {
         display: none;
     }
+    .shirts h2 {
+        top: 2rem;
+        font-size: 4.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
+/********************************** min width 790px *********************************/
+@media screen and (min-width: 790px) {
+    footer .copyright {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+    footer .copyright ul {
+        display: flex;
+        justify-content: flex-start;
+    }
+    footer .copyright ul li {
+        margin-right: 1rem;
+    }
+    footer .copyright > p {
+        text-align: right;
+    }
+}
 /****************************************  ipad media query **************************/
-
 @media screen and (min-width: 513px) {
     nav .btn {
         display: none;
@@ -399,9 +647,7 @@ header {
     .header-anim:nth-child(7) {
         display: none;
     }
-    .album button {
-        transform: translate(220%, 4rem);
-    }
+    
     .album h2 {
         font-size: 14rem;
         bottom: -4.5rem;
@@ -418,7 +664,86 @@ header {
         grid-template-columns: repeat(4, 1fr);
         padding: 0 5rem;
     }
+    .shirts {
+        padding: 3.5rem 5rem 6rem;
+    }
+    .t-shirts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 1rem;
+    }
+    .album button , .shirts button {
+        margin-top: 5rem;
+    }
+    .shirts h2 {
+        top: unset;
+        bottom: 1rem;
+        font-size: 12.5rem;
+        left: 50%;
+        transform: translate(-50%, 7rem);
+    }
+    .last-section {
+        padding: 6rem 3rem 6rem;
+    }
+    .last-section h2 {
+        top: unset;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%,6rem);
+        font-size: 12.5rem;
+        text-transform: uppercase;
+        color: white;
+        opacity: 0.5;
+        font-weight: 900;
+    }
+    .last-section .tickets {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 2rem;
+    }
+    .last-section .tickets .ticket p {
+        display: inline-block;
+        float: left;
+    }
+    .last-section .ticket a {
+        display: inline-block;
+        margin-top: unset;
+        float: right;
+        transform: translateY(-10px);
+    }
+    footer {
+        padding: 4rem 2rem;
+    }
+    footer .footer-navbar {
+        margin-top: 6rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 3rem;
+    }
+    footer .footer-navbar .navbar {
+        display: flex;
+        justify-content: space-between;
+    }
+    footer .navbar li {
+        padding: .3rem;
+    }
+    footer .navbar li a {
+        font-size: .8rem;
+        letter-spacing: 2px;
+    }
+    footer .footer-navbar .footer-icons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: unset;
+        margin: unset;
+    }
+    footer .footer-navbar .footer-icons a {
+        margin-left: 1rem;
+    }
 }
+
+/**************** query for width between 470 and 970 *************/
 @media screen and (min-width:470px) and (max-width:970px){
     .carousal-one {
         grid-template-columns: repeat(1, 1fr);
@@ -428,11 +753,25 @@ header {
         display: grid;
         grid-template-columns: 45% 55%;
     }
+    .shirts h2 {
+        top: 0rem;
+        font-size: 8.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .t-shirts {
+        margin-top: 5rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 1.5rem;
+    }
+    .t-shirts > div {
+        display: grid;
+        grid-template-columns: 45% 55%;
+    }
 }
 
-
 /****************************************  laptop media query **************************/
-
 @media screen and (min-width: 1440px){
     nav ul li a {
         font-size: 2.1vw;
@@ -454,33 +793,29 @@ header {
     .header-anim:nth-child(7) {
         display: block;
     }
-    .album button {
-        transform: translate(320%, 1rem);
-    }
     .carousal-one {
         padding: 0 8rem;
     }
-    .album h2 {
-        font-size: 12rem;
-        bottom: -5rem;
-        top: unset;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: -1;
-    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
+/************************ width between 480px and 790px **********************************/
+@media screen and (min-width: 480px) and (max-width: 790px) {
+    footer .footer-navbar {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-row-gap: 2rem;
+    }
+    footer .footer-navbar .navbar {
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        margin: auto;
+    }
+    footer .footer-navbar .footer-icons {
+        margin: auto;
+        width: 30%;
+    }
+}
 
 @keyframes header-animation {
     0%   {
