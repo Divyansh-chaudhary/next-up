@@ -1,6 +1,6 @@
 $(document).ready( function(){
 
-    /******** document ready animation ****/
+    /******** black strip animation ****/
     setTimeout( function() {
         $(".head-animation").hide();
     }, 1300);
@@ -21,36 +21,8 @@ $(document).ready( function(){
         nextArrow: false,
         infinite: true,
         speed: 900,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-          // You can unslick at a given breakpoint now by adding:
-          // settings: "unslick"
-          // instead of a settings object
-        ]
+        slidesToShow: 1,
+        slidesToScroll: 4
       });
       $('.t-shirts').slick({
         autoplay: true,
@@ -59,44 +31,26 @@ $(document).ready( function(){
         prevArrow: false,
         nextArrow: false,
         speed: 900,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-          // You can unslick at a given breakpoint now by adding:
-          // settings: "unslick"
-          // instead of a settings object
-        ]
+        slidesToShow: 1,
+        slidesToScroll: 1
       });
     }
-    $('.video-carousal').slick({
-      autoplay: true,
+    $('.carousel-video').slick({
+      autoplay: false,
       dots: false,
       infinite: true,
       speed: 900,
       slidesToShow: 1,
       slidesToScroll: 1,
+      prevArrow: '.fa-arrow-left',
+      nextArrow: '.fa-arrow-right'
     });
+
+    /*********** parallax scrolling ****************/
+    if( screen.width < 1439 ) {
+      window.addEventListener("scroll", function () {
+        $("header")[0].style.backgroundPositionY = pageYOffset * 0.09 + "px";
+      });
+    }
+
 });
