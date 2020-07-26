@@ -22,7 +22,7 @@ $(document).ready( function(){
         infinite: true,
         speed: 900,
         slidesToShow: 1,
-        slidesToScroll: 4
+        slidesToScroll: 1
       });
       $('.t-shirts').slick({
         autoplay: true,
